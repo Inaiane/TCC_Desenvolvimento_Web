@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div id="lesson-detail-content" class="shadow-sm py-3 px-5 mt-4 mb-5 bg-body rounded" *ngIf="lesson">
+        <div class="col-12">
+          <h4 class="d-inline">Aula: </h4> <h5 class="d-inline">{{lesson.description}}</h5>
+        </div>
+        <hr>
+        <div class="row panel">
+          <div class="col-6">
+            <div class="col-12">
+              <label class="my-1 label">Estudante: </label>
+              <p class="d-inline"> {{lesson.student?.name}}</p>
+            </div>
+            <div class="col-12">
+              <label class="my-1 label">Disciplina: </label>
+              <p class="d-inline"> {{lesson.subject?.name}}</p>
+            </div>
+            <div class="col-12">
+              <label class="my-1 label">Data Agendada: </label>
+              <p class="d-inline"> {{lesson.eventDate | date:'dd/MM/yyyy HH:mm'}}</p>
+            </div>
+            <div class="col-12">
+              <label class="my-1 label">Duração: </label>
+              <p class="d-inline"> {{lesson.duration}}</p>
+            </div>
+            <div class="col-12">
+              <label class="my-1 label">Status:</label>
+              <p></p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="row">
+              <div id="note-content" class="lesson-detail-block rounded">
+                <div class="col-12">
+                  <label class="mb-2 label">Anotações:</label>
+                  <div class="shadow-none p-3 mb-3 bg-light rounded" *ngIf="!haveLessonNotes">
+                    <span>Nenhuma Anotação encontrada.</span>
+                  </div>
+                  <div *ngIf="haveLessonNotes">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Título</th>
+                          <th scope="col">Anotação</th>
+                          <th scope="col"></th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let note of lessonNotes; let i = index">
+                          <th scope="row">{{i + 1}}</th>
+                          <td>{{note.title}}</td>
+                          <td>{{note.note}}</td>
+                          <td>
+                            <span class="btn-edit px-1" (click)="editLessonNote(note.uid)"><fa-icon [icon]="faPen"></fa-icon></span>
+                          </td>
+                          <td>
+                            <span class="btn-delete px-1" (click)="removeLessonNote(note.uid)"><fa-icon [icon]="faTrash"></fa-icon></span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="float-end">
+                    <button type="button" class="btn btn-outline-success btn-sm"
+                      (click)="createLessonNote()">Adicionar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-spinner 
+  bdColor="rgba(59, 100, 223, 0.75)" 
+  size="large" color="#fff" 
+  type="ball-clip-rotate">
+</ngx-spinner>

@@ -1,0 +1,13 @@
+#lesson-detail-content .label, p{
+    font-size: 1.2em;
+}
+
+.label {
+    font-weight: 500;
+}
+
+.lesson-detail-block {
+    padding: 1em 1.5em;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+}

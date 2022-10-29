@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="mt-4">
+    <div class="col-12">
+      <div id="lessons-list" class="my-5" *ngIf="haveLessons">
+        <h4 class="text-center my-4">Aulas Cadastradas</h4>
+        <div id="lessons-panel" class="shadow-sm px-3 py-2 mb-5 bg-body">
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-primary mt-2 me-md-2" type="button" (click)="createLesson()">Nova Aula</button>
+          </div>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Estudante</th>
+                <th scope="col">Aula</th>
+                <th scope="col">Disciplina</th>
+                <th scope="col">Data</th>
+                <th scope="col">Duração</th>
+                <th scope="col">Valor</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let lesson of lessons; let i = index">
+                <th scope="row">{{i + 1}}</th>
+                <td>{{lesson.student?.name}}</td>
+                <td>{{lesson.description}}</td>
+                <td>{{lesson.subject?.name}}</td>
+                <td>{{lesson.eventDate | date:'dd/MM/yyyy HH:mm'}}</td>
+                <td>{{lesson.duration}}</td>
+                <td>{{lesson.cost}}</td>
+                <td>
+                  <span class="btn-edit" (click)="editLesson(lesson.uid)"><fa-icon [icon]="faPen"></fa-icon></span>
+                </td>
+                <td>
+                  <span class="btn-delete" (click)="removeLesson(lesson.uid)"><fa-icon [icon]="faTrash"></fa-icon></span>
+                </td>
+                <td>
+                  <span class="btn-edit"  (click)="goLessonDetail(lesson.uid)"><a class="">Mais Detalhes</a></span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div id="blank-space" class="my-5" *ngIf="!haveLessons">
+        <div class="shadow-none p-3 mb-5 bg-yellow-200 rounded">
+          <h5 class="text-center my-3">Nenhum aula cadastrada encontrada!</h5>
+          <div class="text-center">
+            <button class="btn btn-primary" type="button" (click)="createLesson()">Nova Aula</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-spinner 
+  bdColor="rgba(59, 100, 223, 0.75)" 
+  size="large" color="#fff" 
+  type="ball-clip-rotate">
+</ngx-spinner>

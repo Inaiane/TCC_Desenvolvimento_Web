@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <div id="dashboard-panel" class="d-flex flex-column justify-content-center mx-5">
+    <div class="row">
+      <h2 class="mb-4" *ngIf="isLoggedIn">Bem vindo(a) {{currentUser?.displayName}}</h2>
+    </div>
+    <div class="col-10 offset-1">
+      <div class="row" *ngIf="haveLessons">
+        <h4 class="mb-4 ms-2">Próximas Aulas Agendadas da semana</h4>
+        <div *ngFor="let lesson of latestLessons" class="col-4">
+          <div class="card text-white card-bg-blue-900 shadow-sm p-3 mb-5 mx-1">
+            <div class="card-body">
+              <h5 class="card-title">{{lesson.eventDate | date:'dd/MM/yyyy HH:mm'}}</h5>
+              <h4 class="card-text">{{lesson.description}}</h4>
+              <p class="card-text">{{lesson.student?.name}}</p>
+              <p class="card-text">{{lesson.subject?.name}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" *ngIf="!haveLessons">
+        <div class="shadow-none p-4 my-4 bg-blue-gray-50 rounded">
+          <h5 class="text-center my-3">Nenhum aula cadastrada encontrada!</h5>
+          <div class="text-center">
+            <button class="btn btn-lg btn-bg-blue-900 text-white my-3" type="button" href="lessons">Ir para Aulas</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-spinner bdColor="rgba(59, 100, 223, 0.75)" size="large" color="#fff" type="ball-clip-rotate">
+</ngx-spinner>

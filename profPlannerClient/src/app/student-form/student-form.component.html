@@ -1,0 +1,59 @@
+<ng-container *ngIf="student$ | async"></ng-container>
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-title">Cadastrar Novo Estudante</h4>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="dismiss()">
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="row g-3" [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+      <div class="col-12">
+        <label for="student-name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="student-name" formControlName="name"
+        [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
+        <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+          <div *ngIf="f['name'].errors['required']">Campo requerido</div>
+        </div>
+      </div>
+      <div class="col-12">
+        <label for="student-email" class="form-label">E-mail</label>
+        <input type="email" class="form-control" id="student-email" formControlName="email"
+        [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+          <div *ngIf="f['email'].errors['required']">Campo requerido</div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="student-phone" class="form-label">Telefone</label>
+        <input type="phone" class="form-control" id="student-phone" formControlName="phone">
+      </div>
+      <div class="col-md-6">
+        <label for="student-birth-date" class="form-label">Data de Nascimento</label>
+        <input type="date" class="form-control" id="student-birth-date" formControlName="birthDate">
+      </div>
+      <div class="col-12">
+        <label for="student-subject" class="form-label">Disciplina</label>
+        <select id="student-subject" class="form-select" formControlName="subject"
+        (change)="changeSubject($event)"
+        [ngClass]="{ 'is-invalid': submitted && f['subject'].errors }">
+        <option [value]="null">Selecione</option>
+        <option *ngFor="let sub of currentUser?.subjects" [value]="sub.value"
+        [selected]="sub.value === currentStudent?.subject?.value">{{sub.name}}</option>
+        </select>
+        <div *ngIf="submitted && f['subject'].errors" class="invalid-feedback">
+          <div *ngIf="f['subject'].errors['required']">Campo requerido</div>
+        </div>
+      </div>
+      <div class="col-12">
+        <label for="student-address" class="form-label">Endereço</label>
+        <input type="text" class="form-control" id="student-address" formControlName="address">
+      </div>
+      <div class="col-12">
+        <div class="float-end">
+          <button type="button" class="btn btn-outline-danger mx-1" (click)="dismiss()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer"></div>
+  

@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Roboto Regular';
+    src: url(../src/assets/fonts/Roboto/Roboto-Regular.ttf);
+}
+html, body { height: 100%; }
+body { 
+    margin: 0;
+    font-family: 'Roboto Regular';
+    background-color: #FAFAFA;
+}
+.btn-edit, .btn-delete{
+    text-decoration: none;
+}
+
+.btn-edit:hover, .btn-delete:hover{
+    cursor: pointer;
+}
+
+.btn-edit {
+    color: #039BE5;
+}
+
+.btn-delete {
+    color: #E53935;
+}

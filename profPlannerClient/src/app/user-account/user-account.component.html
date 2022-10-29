@@ -1,0 +1,162 @@
+<div class="container" id="account-section">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div class="shadow-sm py-3 px-5 mt-4 mb-5 bg-body rounded">
+        <div class="row">
+          <h4 class="pt-1">Perfil</h4>
+          <div *ngIf="!editMode" class="d-grid gap-2 d-md-flex justify-content-md-end mb-2">
+            <div class="btn btn-outline-primary" (click)="editMode = true">
+              Editar
+            </div>
+          </div>
+        </div>
+        <div *ngIf="editMode">
+          <form [formGroup]="userForm" (ngSubmit)="updateUser()">
+            <div class="row">
+              <div class="mb-3 col-6">
+                <label for="name-field" class="form-label">Nome</label>
+                <input type="text" formControlName="displayName" class="form-control" id="name-field" [ngClass]="{
+                    'is-invalid': submitted && f['displayName'].errors
+                  }" placeholder="Informe o nome" />
+                <div *ngIf="submitted && f['displayName'].errors" class="invalid-feedback">
+                  <div *ngIf="f['displayName'].errors['required']">
+                    O campo deve ser informado
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3 col-6">
+                <label for="last-name-field" class="form-label">Sobrenome</label>
+                <input type="text" formControlName="lastName" class="form-control" id="last-name-field"
+                  placeholder="Informe o Sobrenome" [ngClass]="{
+                    'is-invalid': submitted && f['lastName'].errors
+                  }" />
+                <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
+                  <div *ngIf="f['lastName'].errors['maxlength']">
+                    O sobrenome não deve exceder 25 caracteres
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3 col-12">
+                <label for="email-field" class="form-label">Email</label>
+                <input type="email" formControlName="email" class="form-control" id="email-field" required
+                  placeholder="nome@exemplo.com" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
+                <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                  <div *ngIf="f['email'].errors['required']">
+                    O campo deve ser informado
+                  </div>
+                  <div *ngIf="f['email'].errors['email']">E-mail inválido</div>
+                </div>
+              </div>
+              <div class="mb-3 col-12">
+                <label for="password-field" class="form-label">Senha</label>
+                <input type="password" formControlName="password" class="form-control" id="password-field" [ngClass]="{
+                    'is-invalid': submitted && f['password'].errors
+                  }" placeholder="Nova senha" />
+
+                <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                  <div *ngIf="f['password'].errors['required']">
+                    O campo deve ser informado
+                  </div>
+                  <div *ngIf="f['password'].errors['minlength']">
+                    A senha deve ter pelos 6 dígitos
+                  </div>
+                  <div *ngIf="f['password'].errors['maxlength']">
+                    A senha não deve exceder 15 dígitos
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3 col-12">
+                <label for="phone-field" class="form-label">Nascimento</label>
+                <input type="date" formControlName="birthDate" class="form-control" id="birth-date-field"
+                  placeholder="DD/MM/AAAA" />
+              </div>
+              <div class="mb-3 col-12">
+                <label for="phone-field" class="form-label">Telefone</label>
+                <input type="phone" formControlName="phoneNumber" class="form-control" id="phone-field"
+                  placeholder="(99)99999-9999" [ngClass]="{
+                    'is-invalid': submitted && f['phoneNumber'].errors
+                  }" />
+                <div *ngIf="submitted && f['phoneNumber'].errors" class="invalid-feedback">
+                  <div *ngIf="f['phoneNumber'].errors['minlength']">
+                    O número de telefone deve ter 11 caracteres
+                  </div>
+                  <div *ngIf="f['phoneNumber'].errors['maxlength']">
+                    O número de telefone deve ter 11 caracteres
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3 col-12">
+                <label for="password-field" class="form-label">Endereço</label>
+                <input type="text" formControlName="address" class="form-control" id="address-field"
+                  placeholder="Informe o endereço" [ngClass]="{ 'is-invalid': submitted && f['address'].errors }" />
+                <div *ngIf="submitted && f['address'].errors" class="invalid-feedback">
+                  <div *ngIf="f['address'].errors['maxlength']">
+                    O endereço não deve exceder 30 caracteres
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3 col-12">
+                <label for="password-field" class="form-label">CEP</label>
+                <input type="text" formControlName="cep" class="form-control" id="cep-field" placeholder="Informe o CEP"
+                  [ngClass]="{ 'is-invalid': submitted && f['cep'].errors }" />
+                <div *ngIf="submitted && f['cep'].errors" class="invalid-feedback">
+                  <div *ngIf="f['cep'].errors['maxlength']">
+                    O CEP não deve exceder 10 caracteres
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="py-1 float-end">
+                  <button class="btn btn-outline-danger mx-2" (click)="editMode = false">
+                    Cancelar
+                  </button>
+                  <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div id="user-details-panel" *ngIf="!editMode && currentUser">
+          <div class="row pb-4">
+            <div class="col-6">
+            <label>Nome:</label>
+            <span>{{currentUser.displayName}}</span>
+          </div>
+          <div class="col-6">
+            <label>Sobrenome:</label>
+            <span>{{currentUser?.lastName}}</span>
+          </div>
+          <div class="col-6">
+            <label for="">Email:</label>
+            <span>{{currentUser.email}}</span>
+          </div>
+          <div class="col-6">
+            <label>Telefone:</label>
+            <span>{{currentUser?.phoneNumber}} </span>
+          </div>
+          <div class="col-6">
+            <label>Endereço:</label>
+            <span>{{currentUser?.address}}</span>
+          </div>
+          <div class="col-6">
+            <label>CEP:</label>
+            <span>{{currentUser?.cep}}</span>
+          </div>
+          <div class="col-6">
+            <label>Disciplinas:</label>
+            <ul>
+              <li *ngFor="let item of currentUser.subjects" class="">
+                {{item.name}}
+              </li>
+            </ul>
+          </div>
+          <div class="col-6">
+            <label>Nascimento:</label>
+            <span>{{currentUser?.birthDate}}</span>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

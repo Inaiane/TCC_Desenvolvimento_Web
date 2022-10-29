@@ -1,0 +1,17 @@
+[
+    { "name": "Matemática", "value": 1},
+    { "name": "Português", "value": 2},
+    { "name": "História", "value": 3},
+    { "name": "Geografia", "value": 4},
+    { "name": "Biologia", "value": 5},
+    { "name": "Química", "value": 6},
+    { "name": "Física", "value": 7},
+    { "name": "Artes", "value": 8},
+    { "name": "Filosofia", "value": 9},
+    { "name": "Sociologia", "value": 10},
+    { "name": "Inglês", "value": 11},
+    { "name": "Espanhol", "value": 12},
+    { "name": "Francês", "value": 13},
+    { "name": "Mandarim", "value": 14},
+    { "name": "Tecnologia da Informação", "value": 15}
+]

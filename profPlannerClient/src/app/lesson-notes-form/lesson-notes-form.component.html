@@ -1,0 +1,26 @@
+<ng-container *ngIf="lessonNote$ | async"></ng-container>
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-title">{{ title$ | async}}</h4>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="dismiss()">
+  </button>
+</div>
+<div class="modal-body">
+  <form class="row g-3" [formGroup]="noteForm" (ngSubmit)="onSubmit()">
+    <div class="col-12">
+      <label for="description" class="form-label">Titulo</label>
+      <input type="text" class="form-control" id="title" formControlName="title">
+    </div>
+    <div class="col-12">
+      <label for="lesson-plan-content" class="form-label">Anotação</label>
+      <textarea type="text" class="form-control" id="lesson-plan-content" formControlName="note">
+      </textarea>
+    </div>
+    <div class="col-12">
+      <div class="float-end">
+        <button type="button" class="btn btn-outline-danger mx-1" (click)="dismiss()">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer"></div>

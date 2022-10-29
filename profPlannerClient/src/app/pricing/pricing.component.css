@@ -1,0 +1,39 @@
+#pricing-content ul{
+    line-height: 1.5em;
+    vertical-align: text-top;
+    padding: .5em 1em .5em 3em;
+}
+#pricing-content ul li{
+    list-style: none;
+    margin-bottom: 1em;
+    position: relative;
+}
+
+#pricing-content ul li::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -2em;
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    background-size: contain;
+    background-image: url('../../assets/images/check-bold.png');
+}
+
+#pricing-content .card {
+    min-height: 25em;
+    border: none;
+}
+
+#card-personal.card .card-header {
+    font-size: 1.3em;
+    background-color: #00796B;
+    color: #fff;
+}
+
+#card-personal-pro.card .card-header {
+    font-size: 1.3em;
+    background-color: #004D40;
+    color: #fff;
+}

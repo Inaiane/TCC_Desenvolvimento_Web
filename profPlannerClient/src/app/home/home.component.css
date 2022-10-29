@@ -1,0 +1,56 @@
+@font-face {
+    font-family: 'Roboto Light';
+    src: url(../../assets/fonts/Roboto/Roboto-Light.ttf);
+}
+
+.content-home {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+#home-title {
+    font-family: 'Roboto Light';
+    font-weight: 500;
+    font-size: 4em;
+}
+
+.section-spacer {
+    flex: 1 1 auto;
+    padding: 3rem 0;
+}
+
+.section-one {
+    margin: 0;
+    padding: 0;
+    background-color: #fff8ff;
+}
+
+.section-two {
+    margin: 0;
+    padding: 0;
+    background-color: #fffefc;
+}
+
+.main-panel {
+    padding-top: 2rem;
+    padding-bottom: 12rem;
+}
+
+.main-panel-content {
+    padding-top: 5rem;
+}
+
+.content-image {
+    padding-left: 7rem;
+    padding-bottom: 4rem;
+}
+
+.second-title {
+    padding-top: 5rem;
+    padding-left: 15rem;
+}
+
+.btn-bg-blue-900 {
+    background-color: #1976D2;
+}

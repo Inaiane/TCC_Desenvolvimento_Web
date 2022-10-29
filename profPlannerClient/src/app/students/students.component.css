@@ -1,0 +1,19 @@
+#blank-space {
+    background-color: #FFF8E1;
+}
+
+.btn-edit, .btn-delete{
+    text-decoration: none;
+}
+
+.btn-edit:hover, .btn-delete:hover{
+    cursor: pointer;
+}
+
+.btn-edit {
+    color: #039BE5;
+}
+
+.btn-delete {
+    color: #E53935;
+}

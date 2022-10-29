@@ -1,0 +1,43 @@
+.navbar-bg-blue-900 {
+    background-color: #1976D2!important;
+}
+
+.navbar a.navbar-brand {
+    color: #FFF!important;
+}
+
+.navbar a.nav-link {
+    color: #FFF!important;
+}
+
+ul.nav-right {
+    list-style-type: none;
+}
+
+ul.nav-right li {
+    display: inline;
+}
+
+ul.nav-right li a {
+    text-decoration: none;
+}
+
+.navbar a.nav-link.nav-avatar {
+    color: #000!important;
+}
+
+.navbar a.nav-link.nav-avatar::after {
+    display: none;
+}
+
+.nav-avatar {
+    width: 2.6rem;
+    height: 2.6rem;
+    background-color: #e8eaf6;
+    color: #000!important;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: center;
+    align-items: center;
+}

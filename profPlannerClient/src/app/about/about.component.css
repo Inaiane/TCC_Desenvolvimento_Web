@@ -1,0 +1,28 @@
+#about-content {
+    display: flex;
+    height: 70vh;
+}
+
+.bg-image {
+    width: 30em;
+    height: 25em;
+    margin: 3em 0 2em 5em;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+
+.text-box {
+    align-items: center;
+    top: 5em;
+    margin-left: 2em;
+    width: 50em;
+    position: relative;
+}
+
+#about-content p {
+    line-height: 1.5em;
+    font-size: 1.2em;
+    color: #000!important;
+    opacity: none;
+}

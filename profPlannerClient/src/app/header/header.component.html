@@ -1,0 +1,42 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-bg-blue-900">
+      <div class="container-fluid">
+        <a class="navbar-brand" [href]="isLoggedIn ? 'dashboard' : 'home'">ProfPlanner</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-flex justify-content-end">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" *ngIf="!isLoggedIn" href="pricing" aria-current="page">Planos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" *ngIf="!isLoggedIn" href="about">Sobre</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" *ngIf="!isLoggedIn" href="signin">Entrar</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" *ngIf="!isLoggedIn" href="signup">Criar Conta</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" *ngIf="isLoggedIn" href="lessons">Aulas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" *ngIf="isLoggedIn" href="students">Estudantes</a>
+              </li>
+              <li class="nav-item dropdown" *ngIf="isLoggedIn">
+                <a class="nav-link dropdown-toggle nav-avatar" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><span>{{userAvatarName}}</span></a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><a class="dropdown-item" href="userAccount">Perfil</a></li>
+                  <li><a class="dropdown-item" (click)="logout()">Sair</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>

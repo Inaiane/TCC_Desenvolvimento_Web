@@ -1,0 +1,80 @@
+<ng-container *ngIf="lesson$ | async"></ng-container>
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-title">{{ title$ | async}}</h4>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="dismiss()">
+  </button>
+</div>
+<div class="modal-body">
+  <form class="row g-3" [formGroup]="lessonForm" (ngSubmit)="onSubmit()">
+    <div class="col-12">
+      <label for="lesson-description" class="form-label">Descrição</label>
+      <input type="text" class="form-control" id="lesson-description" formControlName="description"
+      [ngClass]="{ 'is-invalid': submitted && f['description'].errors }">
+      <div *ngIf="submitted && f['description'].errors" class="invalid-feedback">
+        <div *ngIf="f['description'].errors['required']">Campo requerido</div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <label for="inputAddress2" class="form-label">Estudante</label>
+      <select id="inputState" class="form-select" 
+      (change)="changeStudent($event)"
+      [ngClass]="{ 'is-invalid': submitted && f['student'].errors }">
+        <option [value]="null">Selecione</option>
+        <option *ngFor="let student of students" [value]="student.uid"
+        [selected]="student.uid === currentLesson?.student?.uid">{{student.name}}</option>
+      </select>
+      <div *ngIf="submitted && f['student'].errors" class="invalid-feedback">
+        <div *ngIf="f['student'].errors['required']">Campo requerido</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="mt-4">
+        <button type="button" class="btn btn-outline-primary mt-1" (click)="openStudentFormModal()">Novo Estudante</button>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="lesson-duration" class="form-label">Duração</label>
+      <input type="text" class="form-control" id="lesson-duration" formControlName="duration"
+      [ngClass]="{ 'is-invalid': submitted && f['duration'].errors }">
+      <div *ngIf="submitted && f['duration'].errors" class="invalid-feedback">
+        <div *ngIf="f['duration'].errors['required']">Campo requerido</div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="lesson-duration" class="form-label">Valor</label>
+      <input type="text" class="form-control" id="lesson-duration" formControlName="cost"
+      [ngClass]="{ 'is-invalid': submitted && f['cost'].errors }">
+      <div *ngIf="submitted && f['cost'].errors" class="invalid-feedback">
+        <div *ngIf="f['cost'].errors['required']">Campo requerido</div>
+      </div>
+    </div>
+    <div class="col-12">
+      <label for="lesson-subject" class="form-label">Disciplina</label>
+      <select id="lesson-subject" class="form-select" formControlName="subject"
+      (change)="changeSubject($event)"
+      [ngClass]="{ 'is-invalid': submitted && f['subject'].errors }">
+      <option [value]="null">Selecione</option>
+      <option *ngFor="let sub of currentUser?.subjects" [value]="sub.value"
+      [selected]="sub.value === currentLesson?.subject?.value">{{sub.name}}</option>
+      </select>
+      <div *ngIf="submitted && f['subject'].errors" class="invalid-feedback">
+        <div *ngIf="f['subject'].errors['required']">Campo requerido</div>
+      </div>
+    </div>
+    <div class="col-12">
+      <label for="event-date" class="form-label">Data</label>
+      <input type="datetime-local" class="form-control" id="event-date" formControlName="eventDate"
+      [ngClass]="{ 'is-invalid': submitted && f['eventDate'].errors }">
+      <div *ngIf="submitted && f['eventDate'].errors" class="invalid-feedback">
+        <div *ngIf="f['eventDate'].errors['required']">Campo requerido</div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="float-end">
+        <button type="button" class="btn btn-outline-danger mx-1" (click)="dismiss()">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer"></div>

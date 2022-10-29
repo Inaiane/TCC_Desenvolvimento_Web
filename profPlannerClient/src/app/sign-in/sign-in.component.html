@@ -1,0 +1,58 @@
+<div class="container" id="signin-section">
+    <div class="row">
+        <div class="col-6 offset-3 p-5">
+            <h5>Fazer login com:</h5>
+            <div class="d-grid gap-2 d-md-block text-center">
+                <button type="button" class="btn btn-outline-primary">Google</button>
+                <button type="button" class="btn  btn-outline-primary mx-3">Facebook</button>
+            </div>
+            <div class="row pt-4">
+                <div class="col-5"><hr></div>
+                <div class="col-2 text-center"><p>ou</p></div>
+                <div class="col-5"><hr></div>
+            </div>
+            <h5 class="py-4"> Fazer login com endereço de e-mail:</h5>
+            <div class="shadow-none p-5 mb-5 border rounded">
+                <div class="row">
+                    <form [formGroup]="loginForm" (ngSubmit)="loginWithEmail()">
+                        <div class="mb-3 col-12">
+                            <label for="email-field" class="form-label">Email</label>
+                            <input type="email" formControlName="email" class="form-control" id="email-field"
+                                [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+                                placeholder="nome@exemplo.com">
+                            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                                <div *ngIf="f['email'].errors['required']">
+                                    O campo deve ser informado
+                                </div>
+                                <div *ngIf="f['email'].errors['email']">
+                                    E-mail inválido
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 col-12">
+                            <label for="password-field" class="form-label">Senha</label>
+                            <input type="password" formControlName="password" class="form-control" id="password-field"
+                                [ngClass]="{'is-invalid': submitted && f['password'].errors }" />
+                            <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                                <div *ngIf="f['password'].errors['required']">
+                                    O campo deve ser informado
+                                </div>
+                                <div *ngIf="f['password'].errors['minlength']">
+                                    A senha deve ter pelos 6 dígitos
+                                </div>
+                                <div *ngIf="f['password'].errors['maxlength']">
+                                    A senha não deve exceder 15 dígitos
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="float-end">
+                                <button type="submit" class="btn btn-primary">Entrar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

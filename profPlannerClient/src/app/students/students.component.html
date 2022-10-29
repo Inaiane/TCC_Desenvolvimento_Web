@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="mt-4">
+    <div class="col-12">
+      <div id="student-list" class="my-5" *ngIf="haveStudents">
+        <h4 class="text-center my-4">Estudantes Cadastrados</h4>
+        <div class="shadow-sm p-3 mb-5 bg-body rounded">
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-primary me-md-2" type="button" (click)="create()">Novo Estudante</button>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Estudante</th>
+                <th scope="col">Disciplina</th>
+                <th scope="col">Data de Nascimento</th>
+                <th scope="col">Email</th>
+                <th scope="col">Endereço</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let student of students; let i = index">
+                <th scope="row">{{i + 1}}</th>
+                <td>{{student.name}}</td>
+                <td>{{student.subject?.name}}</td>
+                <td>{{student.birthDate | date:'dd/MM/yyyy'}}</td>
+                <td>{{student.email}}</td>
+                <td>{{student.address}}</td>
+                <td>
+                  <span class="btn-edit px-2" (click)="editStudent(student.uid)">
+                    <fa-icon [icon]="faPen"></fa-icon>
+                  </span>
+                </td>
+                <td>
+                  <span class="btn-delete px-2" (click)="removeStudent(student.uid)">
+                    <fa-icon [icon]="faTrash"></fa-icon>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div id="blank-space" class="my-5" *ngIf="!haveStudents">
+        <div class="shadow-none p-3 mb-5 rounded">
+          <h5 class="text-center my-3">Nenhum estudante cadastrado encontrado!</h5>
+          <div class="text-center">
+            <button class="btn btn-primary" type="button" (click)="create()">Novo Estudante</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-spinner bdColor="rgba(59, 100, 223, 0.75)" size="large" color="#fff" type="ball-clip-rotate">
+</ngx-spinner>

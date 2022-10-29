@@ -1,0 +1,20 @@
+#dashboard-panel {
+    margin-top: 5%;
+}
+
+.card {
+    border: none;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px!important;
+}
+
+.card-bg-blue-900 {
+    background-color: #5C6BC0;
+}
+
+.btn-bg-blue-900 {
+    background-color: #1976D2;
+}
+
+.bg-blue-gray-50 {
+    background-color: #ECEFF1;
+}
